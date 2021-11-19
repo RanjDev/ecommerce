@@ -2,8 +2,15 @@ import React from "react";
 
 export default function Home() {
   return (
-    <div>
-      <p>Home componenets</p>
+    <div className="">
+      <p>
+        Home componenets lorem51fnjwenflksAbout man lorem51fnjwenflksAbout man
+        lorem51fnjwenflksAbout man lorem51fnjwenflksAbout man
+        lorem51fnjwenflksAbout man lorem51fnjwenflksAbout man
+        lorem51fnjwenflksAbout man lorem51fnjwenflksAbout man
+        lorem51fnjwenflksAbout man lorem51fnjwenflksAbout man
+        lorem51fnjwenflksAbout man lorem51fnjwenflks
+      </p>
     </div>
   );
 }
