@@ -6,7 +6,7 @@ import AboutUs from "./pages/AboutUs";
 
 function App() {
   return (
-    <div className="App">
+    <div className="">
       <Navbar />
 
       {/* Router Paths */}
