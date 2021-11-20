@@ -8,6 +8,7 @@ import Footer from "./pages/components/Footer";
 import UserProfile from "./pages/UserProfile";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import ErrorPageNotFound from "./pages/components/ErrorPageNotFound";
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
+        <Route path="/*" element={<ErrorPageNotFound />} />
       </Routes>
 
       <Footer />

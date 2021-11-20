@@ -17,7 +17,8 @@ export default function Home() {
       <div className="">
         <p>Home Componenet</p>
         {data.map(
-          (datum, index) => index < 5 && <HeroSlider product={datum} />
+          (datum, index) =>
+            index < 5 && <HeroSlider product={datum} key={index} />
         )}
         <Categories />;
       </div>
