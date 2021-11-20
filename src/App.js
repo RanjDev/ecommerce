@@ -4,6 +4,10 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/components/Home";
 import AboutUs from "./pages/AboutUs";
 import Products from "./pages/Products";
+import Footer from "./pages/components/Footer";
+import UserProfile from "./pages/UserProfile";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -15,7 +19,12 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
+
+      <Footer />
     </div>
   );
 }
