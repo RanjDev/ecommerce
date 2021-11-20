@@ -93,7 +93,7 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-      <div className="relative">
+      <div className="relative z-40">
         {/* Menu for sm screen + Add same links to other menu only show those when
         sm: and larger */}
         <div
@@ -127,13 +127,13 @@ export default function Navbar() {
             </NavLink>
 
             <Link to="login">
-              <button className=" border border-bgLight text-bgLight font-semibold py-1 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
+              <button className="w-2/4 border border-bgLight text-bgLight font-semibold py-1 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
                 Login
               </button>
             </Link>
 
             <Link to="register">
-              <button className=" border border-bgLight text-bgLight font-semibold py-1 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
+              <button className="w-2/4 border border-bgLight text-bgLight font-semibold py-1 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
                 Register
               </button>
             </Link>

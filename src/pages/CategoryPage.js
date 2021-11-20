@@ -11,9 +11,9 @@ export default function CategoryPage() {
   if (data) {
     return (
       <div className="flex flex-wrap justify-center gap-2 mt-4">
-        {data.map((datum) => {
+        {data.map((datum, index) => {
           if (datum.category === name) {
-            return <ProductCards product={datum} />;
+            return <ProductCards product={datum} key={index} />;
           } else {
             return "";
           }

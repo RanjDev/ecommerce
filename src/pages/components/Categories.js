@@ -13,7 +13,7 @@ export default function Categories() {
   }
   if (data) {
     return (
-      <div className="bg-gray-400 flex gap-4 w-screen h-48 justify-center items-center">
+      <div className="bg-gray-400 flex flex-wrap gap-2 w-screen h-auto justify-center items-center">
         {data.map((datum) => {
           return (
             <Link to={`/category/${datum.name}`}>
