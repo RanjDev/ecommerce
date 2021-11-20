@@ -9,6 +9,7 @@ import UserProfile from "./pages/UserProfile";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ErrorPageNotFound from "./pages/components/ErrorPageNotFound";
+import ProductDetailPage from "./pages/ProductDetailPage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/products/:details" element={<ProductDetailPage />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

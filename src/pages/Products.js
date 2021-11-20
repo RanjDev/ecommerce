@@ -1,5 +1,6 @@
 import React from "react";
 import { useGetProductsQuery } from "../services/eCommerceAPI";
+import ProductsCards from "./components/ProductsCards";
 
 export default function Products() {
   const { data, isLoading, error } = useGetProductsQuery();
@@ -7,12 +8,10 @@ export default function Products() {
   if (isLoading) return <p>loading ...</p>;
   if (data) {
     return (
-      <div>
-        <p>
-          {data.map((datum) => {
-            return <p>{datum.name}</p>;
-          })}
-        </p>
+      <div className="flex flex-wrap justify-center gap-2 mt-4">
+        {data.map((datum, index) => {
+          return <ProductsCards product={datum} key={index} />;
+        })}
       </div>
     );
   }

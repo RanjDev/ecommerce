@@ -7,6 +7,6 @@ export default function Categories() {
       category
       {/* The categories card will be displayed here */}
       {/* After the user clicks on them, they will be taken to the CATEGORIES PAGE and shown only from that category*/}
-    </div>
+    </div> 
   );
 }

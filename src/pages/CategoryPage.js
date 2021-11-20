@@ -5,6 +5,6 @@ export default function CategoryPage() {
     <div>
       Display products based on the category passed from the categories
       component
-    </div>
+    </div> 
   );
 }
