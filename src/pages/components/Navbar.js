@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 export default function Navbar() {
   const [showNav, setShowNav] = useState(false); //to check if the menu is shown or hidden
@@ -40,9 +40,12 @@ export default function Navbar() {
               </NavLink>
             </div>
 
-            <div className="">
+            <div className="flex items-center justify-center gap-2">
               <button className=" border border-bgLight text-bgLight font-semibold py-1 px-2 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
-                Login
+                <Link to="login">Login</Link>
+              </button>
+              <button className=" border border-bgLight text-bgLight font-semibold py-1 px-2 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
+                <Link to="register">Register</Link>
               </button>
             </div>
           </ul>
@@ -117,7 +120,10 @@ export default function Navbar() {
               About Us
             </NavLink>
             <button className=" border border-bgLight text-bgLight font-semibold py-1 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
-              Login
+              <Link to="login">Login</Link>
+            </button>
+            <button className=" border border-bgLight text-bgLight font-semibold py-1 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
+              <Link to="register">Register</Link>
             </button>
           </ul>
         </div>
