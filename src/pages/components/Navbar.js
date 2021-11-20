@@ -23,12 +23,12 @@ export default function Navbar() {
                 About Us
               </NavLink>
               <NavLink
-                to="about"
+                to="products"
                 className={({ isActive }) =>
                   "" + (isActive ? " text-red-800 font-semibold" : "")
                 }
               >
-                About Us
+                Products
               </NavLink>
               <NavLink
                 to="about"
@@ -101,12 +101,12 @@ export default function Navbar() {
               About Us
             </NavLink>
             <NavLink
-              to="about"
+              to="products"
               className={({ isActive }) =>
                 "" + (isActive ? " text-red-800 font-semibold" : "")
               }
             >
-              About Us
+              Products
             </NavLink>
             <NavLink
               to="about"
