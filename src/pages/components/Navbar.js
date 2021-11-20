@@ -41,12 +41,18 @@ export default function Navbar() {
             </div>
 
             <div className="flex items-center justify-center gap-2">
-              <button className=" border border-bgLight text-bgLight font-semibold py-1 px-2 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
-                <Link to="login">Login</Link>
-              </button>
-              <button className=" border border-bgLight text-bgLight font-semibold py-1 px-2 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
-                <Link to="register">Register</Link>
-              </button>
+              <Link to="login">
+                <button className=" border border-bgLight text-bgLight font-semibold py-1 px-2 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
+                  Login
+                </button>
+              </Link>
+
+              <Link to="register">
+                {" "}
+                <button className=" border border-bgLight text-bgLight font-semibold py-1 px-2 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
+                  Register
+                </button>
+              </Link>
             </div>
           </ul>
           {/* <Link to="/about">About Us</Link> */}
@@ -119,12 +125,18 @@ export default function Navbar() {
             >
               About Us
             </NavLink>
-            <button className=" border border-bgLight text-bgLight font-semibold py-1 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
-              <Link to="login">Login</Link>
-            </button>
-            <button className=" border border-bgLight text-bgLight font-semibold py-1 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
-              <Link to="register">Register</Link>
-            </button>
+
+            <Link to="login">
+              <button className=" border border-bgLight text-bgLight font-semibold py-1 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
+                Login
+              </button>
+            </Link>
+
+            <Link to="register">
+              <button className=" border border-bgLight text-bgLight font-semibold py-1 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
+                Register
+              </button>
+            </Link>
           </ul>
         </div>
       </div>
