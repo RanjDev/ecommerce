@@ -1,11 +1,11 @@
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
   const [showNav, setShowNav] = useState(false); //to check if the menu is shown or hidden
   const [navClasses, setNavClasses] = useState("-translate-y-96"); // the classes that are applied to the small screen nav
-
-  useEffect(() => {}, [navClasses]);
+  const cart = useSelector((state) => state.cart.carts);
 
   return (
     <div className="">
@@ -31,12 +31,12 @@ export default function Navbar() {
                 Products
               </NavLink>
               <NavLink
-                to="about"
+                to="cart"
                 className={({ isActive }) =>
                   "" + (isActive ? " text-red-800 font-semibold" : "")
                 }
               >
-                About Us
+                Cart [{cart.length}]
               </NavLink>
             </div>
 
@@ -48,7 +48,6 @@ export default function Navbar() {
               </Link>
 
               <Link to="register">
-                {" "}
                 <button className=" border border-bgLight text-bgLight font-semibold py-1 px-2 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
                   Register
                 </button>
@@ -97,11 +96,24 @@ export default function Navbar() {
         {/* Menu for sm screen + Add same links to other menu only show those when
         sm: and larger */}
         <div
-          className={`absolute h-auto w-full flex justify-between items-center px-2 py-2
+          className={`absolute sm:hidden h-auto w-full flex justify-between items-center px-2 py-2
            bg-bgDark text-bgLight transition-transform duration-700 transform ${navClasses}`}
         >
           <ul className="flex w-full flex-col gap-1 px-4">
             <NavLink
+              onClick={() => {
+                setShowNav(!showNav);
+
+                // if to check if the nav is true or false
+                if (showNav === false) {
+                  //apply classes to make it visible
+                  setNavClasses("-translate-y-0");
+                } else {
+                  setNavClasses("-translate-y-96");
+
+                  // apply classes that make nav hidden
+                }
+              }}
               to="about"
               className={({ isActive }) =>
                 "" + (isActive ? " text-red-800 font-semibold" : "")
@@ -110,6 +122,19 @@ export default function Navbar() {
               About Us
             </NavLink>
             <NavLink
+              onClick={() => {
+                setShowNav(!showNav);
+
+                // if to check if the nav is true or false
+                if (showNav === false) {
+                  //apply classes to make it visible
+                  setNavClasses("-translate-y-0");
+                } else {
+                  setNavClasses("-translate-y-96");
+
+                  // apply classes that make nav hidden
+                }
+              }}
               to="products"
               className={({ isActive }) =>
                 "" + (isActive ? " text-red-800 font-semibold" : "")
@@ -118,21 +143,64 @@ export default function Navbar() {
               Products
             </NavLink>
             <NavLink
-              to="about"
+              onClick={() => {
+                setShowNav(!showNav);
+
+                // if to check if the nav is true or false
+                if (showNav === false) {
+                  //apply classes to make it visible
+                  setNavClasses("-translate-y-0");
+                } else {
+                  setNavClasses("-translate-y-96");
+
+                  // apply classes that make nav hidden
+                }
+              }}
+              to="cart"
               className={({ isActive }) =>
                 "" + (isActive ? " text-red-800 font-semibold" : "")
               }
             >
-              About Us
+              Cart
             </NavLink>
 
-            <Link to="login">
+            <Link
+              onClick={() => {
+                setShowNav(!showNav);
+
+                // if to check if the nav is true or false
+                if (showNav === false) {
+                  //apply classes to make it visible
+                  setNavClasses("-translate-y-0");
+                } else {
+                  setNavClasses("-translate-y-96");
+
+                  // apply classes that make nav hidden
+                }
+              }}
+              to="login"
+            >
               <button className="w-2/4 border border-bgLight text-bgLight font-semibold py-1 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
                 Login
               </button>
             </Link>
 
-            <Link to="register">
+            <Link
+              onClick={() => {
+                setShowNav(!showNav);
+
+                // if to check if the nav is true or false
+                if (showNav === false) {
+                  //apply classes to make it visible
+                  setNavClasses("-translate-y-0");
+                } else {
+                  setNavClasses("-translate-y-96");
+
+                  // apply classes that make nav hidden
+                }
+              }}
+              to="register"
+            >
               <button className="w-2/4 border border-bgLight text-bgLight font-semibold py-1 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
                 Register
               </button>

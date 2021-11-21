@@ -13,11 +13,11 @@ export default function Categories() {
   }
   if (data) {
     return (
-      <div className="bg-gray-400 flex flex-wrap gap-2 w-screen h-auto justify-center items-center">
+      <div className="flex flex-wrap gap-2 w-screen h-auto justify-center items-center">
         {data.map((datum) => {
           return (
             <Link to={`/category/${datum.name}`}>
-              <div className="border m-2 text-2xl p-4 rounded transition-all duration-300 transform hover:scale-110 hover:text-bgLight hover:bg-gray-700">
+              <div className="m-2 text-xl p-2 rounded transition-all duration-300 transform hover:scale-110 hover:text-bgLight hover:bg-gray-700 shadow-lg">
                 <div>
                   <p>{datum.name}</p>
                 </div>

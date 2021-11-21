@@ -1,27 +1,27 @@
 import { React, useState } from "react";
 import { useGetProductsQuery } from "../../services/eCommerceAPI";
 import Slider from "react-slick";
-import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+// import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function HeroSlider() {
   const [imgIndex, setImgIndex] = useState(0);
   const { data, isLoading, error } = useGetProductsQuery();
 
-  const NextArrow = ({ onClick }) => {
-    return (
-      <div className="arrow next rounded-full " onClick={onClick}>
-        <FaArrowRight />
-      </div>
-    );
-  };
-  const PrevArrow = ({ onClick }) => {
-    return (
-      <div className="arrow prev rounded-full" onClick={onClick}>
-        <FaArrowLeft />
-      </div>
-    );
-  };
+  // const NextArrow = ({ onClick }) => {
+  //   return (
+  //     <div className="arrow next rounded-full " onClick={onClick}>
+  //       <FaArrowRight />
+  //     </div>
+  //   );
+  // };
+  // const PrevArrow = ({ onClick }) => {
+  //   return (
+  //     <div className="arrow prev rounded-full" onClick={onClick}>
+  //       <FaArrowLeft />
+  //     </div>
+  //   );
+  // };
 
   const settings = {
     infinte: true,
@@ -32,8 +32,8 @@ export default function HeroSlider() {
     slidesToShow: 3,
     centerMode: true,
     centerPadding: 0,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
+    // nextArrow: <NextArrow />,
+    // prevArrow: <PrevArrow />,
     beforeChange: (current, next) => setImgIndex(next),
   };
 

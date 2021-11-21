@@ -15,7 +15,7 @@
   transform: scale(1.1);
   opacity: 1;
 }
-.arrow {
+/* .arrow {
   background-color: #fff;
   position: absolute;
   cursor: pointer;
@@ -24,9 +24,9 @@
 
 .arrow svg {
   transition: color 300ms;
-}
+} */
 
-.arrow svg:hover {
+/* .arrow svg:hover {
   color: #68edff;
 }
 
@@ -38,7 +38,7 @@
 .prev {
   left: 0%;
   top: 50%;
-}
+} */
 
 .App-logo {
   height: 40vmin;

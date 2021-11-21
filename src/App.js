@@ -11,6 +11,7 @@ import Register from "./pages/Register";
 import ErrorPageNotFound from "./pages/components/ErrorPageNotFound";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import CategoryPage from "./pages/CategoryPage";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/cart" element={<Cart />} />
 
         <Route path="/*" element={<ErrorPageNotFound />} />
       </Routes>
