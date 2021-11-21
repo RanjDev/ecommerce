@@ -161,7 +161,7 @@ export default function Navbar() {
                 "" + (isActive ? " text-red-800 font-semibold" : "")
               }
             >
-              Cart
+              Cart [{cart.length}]
             </NavLink>
 
             <Link

@@ -25,25 +25,27 @@ export default function ProductsCards({ product }) {
             className="h-48 w-48"
           ></div>
         </Link>
-        <div className="flex flex-col justify-around items-center gap-2 bg-bgLight h-24 w-48">
+        <div className="flex flex-col justify-around items-center gap-2 bg-bgLight h-20 w-48">
           <h1 className="text-xs font-semibold  text-center">{product.name}</h1>
-          <p className="text-xs text-center">$ {product.price}</p>
+          <div className="flex items-center gap-16">
+            <p className="text-xs text-center">$ {product.price}</p>
 
-          {cart.includes(product) ? (
-            <BsCartDashFill
-              className="text-red-600 text-2xl shadow-xl mb-2"
-              onClick={() => {
-                dispatch(removeFromCart(product._id));
-              }}
-            />
-          ) : (
-            <BsCartPlusFill
-              className="text-actionBlue text-xl shadow-2xl mb-2"
-              onClick={() => {
-                dispatch(addToCart(product));
-              }}
-            />
-          )}
+            {cart.includes(product) ? (
+              <BsCartDashFill
+                className="text-red-600 text-2xl shadow-xl mb-2"
+                onClick={() => {
+                  dispatch(removeFromCart(product._id));
+                }}
+              />
+            ) : (
+              <BsCartPlusFill
+                className="text-actionBlue text-xl shadow-2xl mb-2"
+                onClick={() => {
+                  dispatch(addToCart(product));
+                }}
+              />
+            )}
+          </div>
         </div>
       </div>
     </div>
