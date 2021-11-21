@@ -4,6 +4,7 @@ import ProductsCards from "./components/ProductsCards";
 
 export default function Products() {
   const { data, isLoading, error } = useGetProductsQuery();
+
   if (error) return <p>error</p>;
   if (isLoading) return <p>loading ...</p>;
   if (data) {

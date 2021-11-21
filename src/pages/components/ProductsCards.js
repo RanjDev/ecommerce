@@ -4,9 +4,19 @@ import { BsCartPlusFill, BsCartDashFill } from "react-icons/bs";
 import { useSelector, useDispatch } from "react-redux";
 import { addToCart, removeFromCart } from "../../features/cartSlice";
 
-export default function ProductsCards({ product }) {
+export default function ProductsCards({ product, index }) {
   const cart = useSelector((state) => state.cart.carts);
   const dispatch = useDispatch();
+
+  // const check = () => {
+  //   return cart.map((cartItem, idx) => {
+  //     if (cartItem._id === product._id) {
+  //       return idx;
+  //     } else {
+  //       return null;
+  //     }
+  //   });
+  // };
 
   return (
     <div>
@@ -29,6 +39,8 @@ export default function ProductsCards({ product }) {
           <h1 className="text-xs font-semibold  text-center">{product.name}</h1>
           <div className="flex items-center gap-16">
             <p className="text-xs text-center">$ {product.price}</p>
+
+            {/* {console.log("Index :" + JSON.stringify(cart[0]))} */}
 
             {cart.includes(product) ? (
               <BsCartDashFill
