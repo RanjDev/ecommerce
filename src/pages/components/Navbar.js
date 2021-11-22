@@ -1,11 +1,16 @@
 import { React, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logOut } from "../../features/authSlice";
 
 export default function Navbar() {
   const [showNav, setShowNav] = useState(false); //to check if the menu is shown or hidden
-  const [navClasses, setNavClasses] = useState("-translate-y-96"); // the classes that are applied to the small screen nav
+  const [navClasses, setNavClasses] = useState("-translate-y-96");
+  // the classes that are applied to the small screen nav
+
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.carts);
+  const userInfo = useSelector((state) => state.auth.user);
 
   return (
     <div className="">
@@ -39,19 +44,41 @@ export default function Navbar() {
                 Cart [{cart.length}]
               </NavLink>
             </div>
-
             <div className="flex items-center justify-center gap-2">
-              <Link to="login">
-                <button className=" border border-bgLight text-bgLight font-semibold py-1 px-2 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
-                  Login
-                </button>
-              </Link>
+              {Object.keys(userInfo) < 2 ? (
+                <div className="flex justify-center items-center gap-4">
+                  <Link to="login">
+                    <button className=" border border-bgLight text-bgLight font-semibold py-1 px-2 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
+                      LogIn
+                    </button>
+                  </Link>
 
-              <Link to="register">
-                <button className=" border border-bgLight text-bgLight font-semibold py-1 px-2 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
-                  Register
-                </button>
-              </Link>
+                  <Link to="register">
+                    <button className=" border border-bgLight text-bgLight font-semibold py-1 px-2 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
+                      Register
+                    </button>
+                  </Link>
+                </div>
+              ) : (
+                <div className="flex justify-center items-center gap-4">
+                  <NavLink
+                    to="/profile"
+                    className={({ isActive }) =>
+                      "" + (isActive ? " text-red-800 font-semibold" : "")
+                    }
+                  >
+                    Profile
+                  </NavLink>
+                  <button
+                    onClick={() => {
+                      dispatch(logOut());
+                    }}
+                    className=" border border-bgLight text-bgLight font-semibold py-1 px-2 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark"
+                  >
+                    LogOut
+                  </button>
+                </div>
+              )}
             </div>
           </ul>
           {/* <Link to="/about">About Us</Link> */}
@@ -164,47 +191,108 @@ export default function Navbar() {
               Cart [{cart.length}]
             </NavLink>
 
-            <Link
-              onClick={() => {
-                setShowNav(!showNav);
+            {Object.keys(userInfo) < 2 ? (
+              <div className="flex justify-center items-center gap-4">
+                <Link
+                  to="login"
+                  onClick={() => {
+                    setShowNav(!showNav);
 
-                // if to check if the nav is true or false
-                if (showNav === false) {
-                  //apply classes to make it visible
-                  setNavClasses("-translate-y-0");
-                } else {
-                  setNavClasses("-translate-y-96");
+                    // if to check if the nav is true or false
+                    if (showNav === false) {
+                      //apply classes to make it visible
+                      setNavClasses("-translate-y-0");
+                    } else {
+                      setNavClasses("-translate-y-96");
 
-                  // apply classes that make nav hidden
-                }
-              }}
-              to="login"
-            >
-              <button className="w-2/4 border border-bgLight text-bgLight font-semibold py-1 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
-                Login
-              </button>
-            </Link>
+                      // apply classes that make nav hidden
+                    }
+                  }}
+                >
+                  <button className=" border border-bgLight text-bgLight font-semibold py-1 px-2 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
+                    LogIn
+                  </button>
+                </Link>
 
-            <Link
-              onClick={() => {
-                setShowNav(!showNav);
+                <Link
+                  to="register"
+                  onClick={() => {
+                    setShowNav(!showNav);
 
-                // if to check if the nav is true or false
-                if (showNav === false) {
-                  //apply classes to make it visible
-                  setNavClasses("-translate-y-0");
-                } else {
-                  setNavClasses("-translate-y-96");
+                    // if to check if the nav is true or false
+                    if (showNav === false) {
+                      //apply classes to make it visible
+                      setNavClasses("-translate-y-0");
+                    } else {
+                      setNavClasses("-translate-y-96");
 
-                  // apply classes that make nav hidden
-                }
-              }}
-              to="register"
-            >
-              <button className="w-2/4 border border-bgLight text-bgLight font-semibold py-1 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
-                Register
-              </button>
-            </Link>
+                      // apply classes that make nav hidden
+                    }
+                  }}
+                >
+                  <button
+                    onClick={() => {
+                      setShowNav(!showNav);
+
+                      // if to check if the nav is true or false
+                      if (showNav === false) {
+                        //apply classes to make it visible
+                        setNavClasses("-translate-y-0");
+                      } else {
+                        setNavClasses("-translate-y-96");
+
+                        // apply classes that make nav hidden
+                      }
+                    }}
+                    className=" border border-bgLight text-bgLight font-semibold py-1 px-2 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark"
+                  >
+                    Register
+                  </button>
+                </Link>
+              </div>
+            ) : (
+              <div className="flex justify-center items-center gap-4">
+                <NavLink
+                  onClick={() => {
+                    setShowNav(!showNav);
+
+                    // if to check if the nav is true or false
+                    if (showNav === false) {
+                      //apply classes to make it visible
+                      setNavClasses("-translate-y-0");
+                    } else {
+                      setNavClasses("-translate-y-96");
+
+                      // apply classes that make nav hidden
+                    }
+                  }}
+                  to="/profile"
+                  className={({ isActive }) =>
+                    "" + (isActive ? " text-red-800 font-semibold" : "")
+                  }
+                >
+                  Profile
+                </NavLink>
+                <button
+                  onClick={() => {
+                    dispatch(logOut());
+                    setShowNav(!showNav);
+                    // if to check if the nav is true or false
+                    if (showNav === false) {
+                      //apply classes to make it visible
+                      setNavClasses("-translate-y-0");
+                    } else {
+                      setNavClasses("-translate-y-96");
+
+                      // apply classes that make nav hidden
+                    }
+                  }}
+                  className=" border border-bgLight text-bgLight font-semibold py-1 px-2 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark"
+                >
+                  LogOut
+                </button>
+              </div>
+            )}
           </ul>
         </div>
       </div>

@@ -8,21 +8,19 @@ export default function ProductsCards({ product, index }) {
   const cart = useSelector((state) => state.cart.carts);
   const dispatch = useDispatch();
 
-  // const check = () => {
-  //   return cart.map((cartItem, idx) => {
-  //     if (cartItem._id === product._id) {
-  //       return idx;
-  //     } else {
-  //       return null;
-  //     }
-  //   });
-  // };
+  const cartProducts = [];
+  function getCart() {
+    cart.forEach((prod) => {
+      return cartProducts.push(prod._id);
+    });
+  }
 
+  getCart();
   return (
     <div>
       <div className="rounded-md shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-200">
         <Link
-          className=" mx-auto text-xs font-semibold text-center text-bgLight hover:scale-110 w-20 bg-actionBlue rounded"
+          className=" mx-auto text-xs font-semibold text-center text-bgLight hover:scale-105 w-20 bg-actionBlue rounded"
           to={`/products/${product._id}`}
         >
           <div
@@ -38,13 +36,11 @@ export default function ProductsCards({ product, index }) {
         <div className="flex flex-col justify-around items-center gap-2 bg-bgLight h-20 w-48">
           <h1 className="text-xs font-semibold  text-center">{product.name}</h1>
           <div className="flex items-center gap-16">
-            <p className="text-xs text-center">$ {product.price}</p>
+            <p className="text-md text-center">$ {product.price}</p>
 
-            {/* {console.log("Index :" + JSON.stringify(cart[0]))} */}
-
-            {cart.includes(product) ? (
+            {cartProducts.includes(product._id) ? (
               <BsCartDashFill
-                className="text-red-600 text-2xl shadow-xl mb-2"
+                className="text-red-600 text-xl shadow-xl mb-2"
                 onClick={() => {
                   dispatch(removeFromCart(product._id));
                 }}

@@ -1,9 +1,14 @@
 import { React, useState } from "react";
 import LoginSvg from "../login.svg";
+import { useDispatch } from "react-redux";
+import { logIn } from "../features/authSlice";
+import { useNavigate } from "react-router";
 
 export default function Login() {
   const [inputs, setInputs] = useState({});
   const [isChecked, setIsChecked] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleCheckChange = () => {
     setIsChecked(!isChecked);
@@ -17,9 +22,17 @@ export default function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(inputs.email);
-    console.log(inputs.password);
-    console.log(isChecked);
+
+    //TODO: login and logout logic
+    if (dispatch(logIn(inputs))) {
+      navigate("/profile");
+    } else {
+      alert("Login failed");
+    }
+
+    // console.log(inputs.email);
+    // console.log(inputs.password);
+    // console.log(isChecked);
   };
   return (
     <div>
