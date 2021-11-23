@@ -13,18 +13,29 @@ export default function Categories() {
   }
   if (data) {
     return (
-      <div className="flex flex-wrap gap-2 w-screen h-auto justify-center items-center">
-        {data.map((datum) => {
-          return (
-            <Link to={`/category/${datum.name}`}>
-              <div className="m-2 text-xl p-2 rounded transition-all duration-300 transform hover:scale-110 hover:text-bgLight hover:bg-gray-700 shadow-lg">
-                <div>
-                  <p>{datum.name}</p>
+      <div>
+        <p className="text-center font-semibold text-xs sm:text-sm md:text-lg text-goldenBalance-extraLight bg-mainBlue-default">
+          Choose from our categories
+        </p>
+        <div className="flex flex-wrap gap-1 sm:gap-4 lg:gap-8 w-screen h-auto sm:h-32 p-2 justify-center items-center bg-mainBlue-default">
+          {data.map((datum) => {
+            return (
+              <Link to={`/category/${datum.name}`}>
+                <div
+                  className="m-2 text-xl p-2 rounded transition-all duration-300 shadow
+                hover:shadow-xl group-hover:text-mainBlue-light group"
+                >
+                  <p
+                    className="font-semibold uppercase text-xs sm:text-sm md:text-lg text-goldenBalance-extraLight
+                 transition-all duration-300 group-hover:text-goldenBalance-light active:text-goldenBalance-dark"
+                  >
+                    {datum.name}
+                  </p>
                 </div>
-              </div>
-            </Link>
-          );
-        })}
+              </Link>
+            );
+          })}
+        </div>
       </div>
     );
   }

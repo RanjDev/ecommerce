@@ -45,18 +45,21 @@ export default function HeroSlider() {
   }
   if (data) {
     return (
-      <div className="w-3/4 m-4 mx-auto">
+      <div className="w-full sm:w-9/12 my-8 mx-auto">
         <Slider {...settings}>
           {data.map((datum, index) => {
             return (
-              <div className="rounded overflow-hidden">
+              <div className="rounded ">
                 <Link to={`/products/${datum._id}`}>
                   <div
                     className={
-                      index === imgIndex ? "slide activeSlide" : "slide"
+                      index === imgIndex ? "slide activeSlide mb-8" : "slide"
                     }
                   >
-                    <img src={datum.image} alt="Hot Deals" />
+                    <img className="" src={datum.image} alt="Hot Deals" />
+                    <p className="text-center text-xs sm:text-sm md:text-lg font-thin p-1 ">
+                      {datum.name}
+                    </p>
                   </div>
                 </Link>
                 <div></div>

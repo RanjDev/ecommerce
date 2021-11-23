@@ -8,15 +8,15 @@ export default function Footer() {
       <div className="w-full border-t-2 border-gray-200 p-4 mt-16">
         <div>
           <div className="w-full my-4 flex flex-col items-center">
-            <div className="w-4/6 h-auto bg-bgLight rounded shadow-2xl">
-              <p className="text-center text-xs text-gray-600 mt-1 px-4">
-                Join our news letter for the latest offers.
+            <div className="w-2/4 h-auto bg-gradient-to-tr from-goldenBalance-extraLight via-goldenBalance-light to-goldenBalance-extraLight rounded shadow-2xl">
+              <p className="text-center text-xs text-mainBlue-light mt-1 px-4">
+                Join our newsletter for the latest offers.
               </p>
               <form className="p-4">
-                <label className="block text-gray-700  text-xs font-bold mb-2">
+                <label className="block text-gray-900 text-xs font-bold mb-2">
                   Enter your email:
                   <input
-                    className="shadow appearance-none border rounded w-full py-2 px-3  text-xs text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    className="mt-2 shadow appearance-none border rounded w-full py-2 px-3 text-xs text-gray-700 leading-tight  focus:shadow-outline"
                     placeholder="leo@decaprio.com"
                     type="email"
                   />

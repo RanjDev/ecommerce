@@ -6,7 +6,7 @@ export default function ErrorPageNotFound() {
     <div>
       <div className="max-screen h-auto flex flex-col gap-4 items-center justify-center p-4">
         <img
-          className="h-72 sm:h-96"
+          className="h-72 sm:h-96 shadow-xl rounded"
           src={Error}
           alt="Error 404, page not found"
         />
