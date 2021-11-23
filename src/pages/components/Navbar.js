@@ -12,34 +12,40 @@ export default function Navbar() {
   const cart = useSelector((state) => state.cart.carts);
   const userInfo = useSelector((state) => state.auth.user);
 
+  let activeStyle = {
+    borderBottom: "1px solid #bba35a",
+  };
+
   return (
     <div className="">
-      <div className="relative z-50 h-16 w-full flex justify-between items-center px-4 py-2 bg-bgDark shadow-lg">
-        <div className="flex items-center gap-2 text-bgLight w-full">
-          <NavLink to="/">Home/Logo</NavLink>
+      <div className="relative z-50 h-16 w-full flex justify-between items-center px-4 py-2 bg-mainBlue-default shadow-lg">
+        <div className="flex items-center gap-2 w-full">
+          <NavLink
+            className="text-goldenBalance-extraLight hover:text-goldenBalance-light transition-all duration-200 active:text-goldenBalance-dark"
+            to="/"
+          >
+            Home/Logo
+          </NavLink>
           <ul className="w-full justify-between items-center gap-1 px-4 hidden sm:flex">
             <div className="flex items-center gap-4">
               <NavLink
                 to="about"
-                className={({ isActive }) =>
-                  "" + (isActive ? " text-red-800 font-semibold" : "")
-                }
+                className={`text-goldenBalance-extraLight hover:text-goldenBalance-light transition-all duration-20 active:text-goldenBalance-dark`}
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 About Us
               </NavLink>
               <NavLink
                 to="products"
-                className={({ isActive }) =>
-                  "" + (isActive ? " text-red-800 font-semibold" : "")
-                }
+                className={`text-goldenBalance-extraLight hover:text-goldenBalance-light transition-all duration-200 active:text-goldenBalance-dark`}
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Products
               </NavLink>
               <NavLink
                 to="cart"
-                className={({ isActive }) =>
-                  "" + (isActive ? " text-red-800 font-semibold" : "")
-                }
+                className={`text-goldenBalance-extraLight hover:text-goldenBalance-light transition-all duration-200 active:text-goldenBalance-dark`}
+                style={({ isActive }) => (isActive ? activeStyle : undefined)}
               >
                 Cart [{cart.length}]
               </NavLink>
@@ -48,13 +54,19 @@ export default function Navbar() {
               {Object.keys(userInfo) < 2 ? (
                 <div className="flex justify-center items-center gap-4">
                   <Link to="login">
-                    <button className=" border border-bgLight text-bgLight font-semibold py-1 px-2 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
+                    <button
+                      className=" border border-goldenBalance-default text-goldenBalance-default  font-semibold py-1 px-2 rounded transition-all duration-300
+                     hover:bg-goldenBalance-default hover:text-mainBlue-default active:bg-goldenBalance-dark"
+                    >
                       LogIn
                     </button>
                   </Link>
 
                   <Link to="register">
-                    <button className=" border border-bgLight text-bgLight font-semibold py-1 px-2 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
+                    <button
+                      className=" border border-goldenBalance-default text-goldenBalance-default  font-semibold py-1 px-2 rounded transition-all duration-300
+                     hover:bg-goldenBalance-default hover:text-mainBlue-default active:bg-goldenBalance-dark"
+                    >
                       Register
                     </button>
                   </Link>
@@ -63,8 +75,9 @@ export default function Navbar() {
                 <div className="flex justify-center items-center gap-4">
                   <NavLink
                     to="/profile"
-                    className={({ isActive }) =>
-                      "" + (isActive ? " text-red-800 font-semibold" : "")
+                    className="text-goldenBalance-extraLight hover:text-goldenBalance-light transition-all duration-200 active:text-goldenBalance-dark"
+                    style={({ isActive }) =>
+                      isActive ? activeStyle : undefined
                     }
                   >
                     Profile
@@ -73,7 +86,8 @@ export default function Navbar() {
                     onClick={() => {
                       dispatch(logOut());
                     }}
-                    className=" border border-bgLight text-bgLight font-semibold py-1 px-2 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark"
+                    className="border border-goldenBalance-default text-goldenBalance-default  font-semibold py-1 px-2 rounded transition-all duration-300
+                    hover:bg-goldenBalance-default hover:text-mainBlue-default active:bg-goldenBalance-dark"
                   >
                     LogOut
                   </button>
@@ -81,8 +95,8 @@ export default function Navbar() {
               )}
             </div>
           </ul>
-          {/* <Link to="/about">About Us</Link> */}
         </div>
+        {/* Small screen menu begins */}
         <div className="sm:hidden">
           {/* This is for the menu button */}
           <button
@@ -124,7 +138,7 @@ export default function Navbar() {
         sm: and larger */}
         <div
           className={`absolute sm:hidden h-auto w-full flex justify-between items-center px-2 py-2
-           bg-bgDark text-bgLight transition-transform duration-700 transform ${navClasses}`}
+           bg-mainBlue-default transition-transform duration-700 transform ${navClasses}`}
         >
           <ul className="flex w-full flex-col gap-1 px-4">
             <NavLink
@@ -142,9 +156,8 @@ export default function Navbar() {
                 }
               }}
               to="about"
-              className={({ isActive }) =>
-                "" + (isActive ? " text-red-800 font-semibold" : "")
-              }
+              className=" text-goldenBalance-extraLight hover:text-goldenBalance-light transition-all duration-200 active:text-goldenBalance-dark"
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
             >
               About Us
             </NavLink>
@@ -163,9 +176,8 @@ export default function Navbar() {
                 }
               }}
               to="products"
-              className={({ isActive }) =>
-                "" + (isActive ? " text-red-800 font-semibold" : "")
-              }
+              className="text-goldenBalance-extraLight hover:text-goldenBalance-light transition-all duration-200 active:text-goldenBalance-dark"
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
             >
               Products
             </NavLink>
@@ -184,9 +196,8 @@ export default function Navbar() {
                 }
               }}
               to="cart"
-              className={({ isActive }) =>
-                "" + (isActive ? " text-red-800 font-semibold" : "")
-              }
+              className="text-goldenBalance-extraLight hover:text-goldenBalance-light transition-all duration-200 active:text-goldenBalance-dark"
+              style={({ isActive }) => (isActive ? activeStyle : undefined)}
             >
               Cart [{cart.length}]
             </NavLink>
@@ -209,7 +220,10 @@ export default function Navbar() {
                     }
                   }}
                 >
-                  <button className=" border border-bgLight text-bgLight font-semibold py-1 px-2 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark">
+                  <button
+                    className=" border border-goldenBalance-default text-goldenBalance-default  font-semibold py-1 px-2 rounded transition-all duration-300
+                    active:bg-goldenBalance-dark"
+                  >
                     LogIn
                   </button>
                 </Link>
@@ -244,7 +258,8 @@ export default function Navbar() {
                         // apply classes that make nav hidden
                       }
                     }}
-                    className=" border border-bgLight text-bgLight font-semibold py-1 px-2 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark"
+                    className=" border border-goldenBalance-default text-goldenBalance-default  font-semibold py-1 px-2 rounded transition-all duration-300
+                   active:bg-goldenBalance-dark"
                   >
                     Register
                   </button>
@@ -267,9 +282,8 @@ export default function Navbar() {
                     }
                   }}
                   to="/profile"
-                  className={({ isActive }) =>
-                    "" + (isActive ? " text-red-800 font-semibold" : "")
-                  }
+                  className="text-goldenBalance-extraLight hover:text-goldenBalance-light transition-all duration-200 active:text-goldenBalance-dark"
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
                 >
                   Profile
                 </NavLink>
@@ -287,7 +301,8 @@ export default function Navbar() {
                       // apply classes that make nav hidden
                     }
                   }}
-                  className=" border border-bgLight text-bgLight font-semibold py-1 px-2 rounded transition-all duration-150 hover:bg-bgLight hover:text-bgDark"
+                  className=" border border-goldenBalance-default text-goldenBalance-default  font-semibold py-1 px-2 rounded transition-all duration-300
+                   active:bg-goldenBalance-dark"
                 >
                   LogOut
                 </button>
