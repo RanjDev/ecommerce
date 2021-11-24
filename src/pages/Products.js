@@ -15,10 +15,21 @@ export default function Products() {
   if (isLoading) return <Loading />;
   if (data) {
     return (
-      <div className="flex flex-wrap justify-center gap-8 mt-4">
-        {data.map((datum, index) => {
-          return <ProductsCards product={datum} key={index} />;
-        })}
+      <div>
+        <div>
+          <p className=" ml-20 mt-8 font-semibold">Choose from our products:</p>
+          <p className=" ml-20  font-light text-gray-600">
+            Add the chosen products to the Cart, then check it out
+          </p>
+        </div>
+        <div className="flex flex-wrap justify-center gap-16 mt-4 ">
+          {data.map((datum, index) => {
+            return <ProductsCards product={datum} key={index} />;
+          })}
+        </div>
+        {/* <div>
+          <p>Next...</p>
+        </div> */}
       </div>
     );
   }

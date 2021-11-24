@@ -34,6 +34,9 @@ module.exports = {
   variants: {
     extend: {
       scale: ["group-hover"],
+      padding: ["hover"],
+      margin: ["hover"],
+      height: ["hover"],
       backgroundColor: ["active"],
       textColor: ["active"],
     },

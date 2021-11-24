@@ -17,10 +17,10 @@ export default function ProductsCards({ product, index }) {
 
   getCart();
   return (
-    <div>
-      <div className="rounded-md shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-200">
+    <div className="">
+      <div className="group rounded-md shadow-2xl overflow-hidden hover:-m-4 hover:p-4  bg-goldenBalance-extraLight transition-all duration-300 ">
         <Link
-          className=" mx-auto text-xs font-semibold text-center text-bgLight hover:scale-105 w-20 bg-actionBlue rounded"
+          className=" mx-auto text-xs font-semibold text-center w-20  rounded"
           to={`/products/${product._id}`}
         >
           <div
@@ -30,24 +30,24 @@ export default function ProductsCards({ product, index }) {
               backgroundPosition: "center",
               backgroundSize: "cover",
             }}
-            className="h-48 w-48"
+            className="h-48 w-48 "
           ></div>
         </Link>
-        <div className="flex flex-col justify-around items-center gap-2 bg-bgLight h-20 w-48">
+        <div className="flex flex-col justify-around items-center gap-2 bg-goldenBalance-extraLight h-20 w-48">
           <h1 className="text-xs font-semibold  text-center">{product.name}</h1>
           <div className="flex items-center gap-16">
             <p className="text-md text-center">$ {product.price}</p>
 
             {cartProducts.includes(product._id) ? (
               <BsCartDashFill
-                className="text-red-600 text-xl shadow-xl mb-2"
+                className="text-red-600 hover:text-red-800 active:text-red-900 cursor-pointer text-xl mb-2 transition-all duration-500 "
                 onClick={() => {
                   dispatch(removeFromCart(product._id));
                 }}
               />
             ) : (
               <BsCartPlusFill
-                className="text-actionBlue text-xl shadow-2xl mb-2"
+                className="text-blurTrust-light hover:text-blurTrust-dark active:text-blurTrust-darkest cursor-pointer text-xl  mb-2 transition-all duration-500 "
                 onClick={() => {
                   dispatch(addToCart(product));
                 }}
