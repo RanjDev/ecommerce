@@ -1,15 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useGetCategoriesQuery } from "../../services/eCommerceAPI";
+import Loading from "./Loading";
+import ErrorDataNotLoaded from "./ErrorDataNotLoaded";
 
 export default function Categories() {
   const { data, isLoading, error } = useGetCategoriesQuery();
 
   if (isLoading) {
-    return <p>is loading.. </p>;
+    return <Loading />;
   }
   if (error) {
-    return <p>Error</p>;
+    return <ErrorDataNotLoaded error={error} />;
   }
   if (data) {
     return (

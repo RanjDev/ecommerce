@@ -21,11 +21,11 @@ export default function Register() {
   };
   return (
     <div>
-      <div className="w-full h-auto flex justify-center bg-gradient-to-tr from-bgDark via-purple-400 to-bgLight">
+      <div className="w-full h-screen flex justify-center bg-gradient-to-tr from-mainBlue-default via-goldenBalance-light to-mainBlue-default">
         <div className="w-full my-4 flex flex-col items-center">
           <img className="h-24" src={Login} alt="login" />
-          <div className="w-4/6 h-auto bg-bgLight rounded shadow-2xl">
-            <p className="text-center text-xs text-gray-600 mt-1 px-4">
+          <div className="w-4/6 h-auto bg-goldenBalance-extraLight rounded shadow-2xl">
+            <p className="text-center text-xs text-gray-600 mt-4 px-4">
               Our registered users benefit from our services.
             </p>
             <form onSubmit={handleSubmit} className="p-4">
@@ -78,11 +78,14 @@ export default function Register() {
                 value="Register"
                 type="submit"
                 className="
-                bg-actionBlue
-                hover:bg-blue-700
+                bg-blurTrust-light
+                hover:bg-blurTrust-dark
+                active:bg-blurTrust-darkest
                 text-sm
                 text-white
                 font-semibold
+                shadow-md
+                hover:shadow-lg
                 mt-2
                 py-2
                 px-4

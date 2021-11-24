@@ -3,6 +3,7 @@ import { useGetProductsQuery } from "../../services/eCommerceAPI";
 import Slider from "react-slick";
 // import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Loading from "./Loading";
 
 export default function HeroSlider() {
   const [imgIndex, setImgIndex] = useState(0);
@@ -38,7 +39,7 @@ export default function HeroSlider() {
   };
 
   if (isLoading) {
-    return <p>isLoading ...</p>;
+    return <Loading />;
   }
   if (error) {
     return <p>error happened</p>;

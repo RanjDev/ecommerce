@@ -23,7 +23,6 @@ export default function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    //TODO: login and logout logic
     if (dispatch(logIn(inputs))) {
       navigate("/profile");
     } else {
@@ -36,18 +35,18 @@ export default function Login() {
   };
   return (
     <div>
-      <div className="w-full h-auto flex justify-center bg-gradient-to-tr from-bgDark via-purple-400 to-bgLight">
+      <div className="w-full h-screen  flex justify-center  bg-gradient-to-tr from-mainBlue-default via-goldenBalance-light to-mainBlue-default">
         <div className="w-full my-4 flex flex-col items-center">
           <img className="h-24" src={LoginSvg} alt="login" />
-          <div className="w-4/6 h-auto bg-bgLight rounded shadow-2xl">
-            <p className="text-center text-xs text-gray-600 mt-1 px-4">
+          <div className="w-4/6 h-auto bg-goldenBalance-extraLight rounded shadow-2xl">
+            <p className="text-center text-xs text-gray-600 mt-4 px-4">
               Our registered users benefit from our services.
             </p>
-            <form onSubmit={handleSubmit} className="p-4">
+            <form onSubmit={handleSubmit} className="p-4 m-4">
               <label className="block text-gray-700  text-xs font-bold mb-2">
                 Enter your email:
                 <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3  text-xs text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  className="shadow appearance-none border rounded w-full py-2 px-3 mb-4 text-xs text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   placeholder="leo@decaprio.com"
                   type="email"
                   name="email"
@@ -58,7 +57,7 @@ export default function Login() {
               <label className="block text-gray-700  text-xs font-bold mb-2">
                 Enter your password:
                 <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3  text-xs text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  className="shadow appearance-none border rounded w-full py-2 px-3 mb-4 text-xs text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   placeholder="NOT 1234"
                   type="password"
                   name="password"
@@ -81,35 +80,46 @@ export default function Login() {
                 value="Login"
                 type="submit"
                 className="
-                bg-actionBlue
-                hover:bg-blue-700
+                bg-blurTrust-light
+                hover:bg-blurTrust-dark
+                active:bg-blurTrust-darkest
                 text-sm
                 text-white
                 font-semibold
+                shadow-md
+                hover:shadow-lg
                 mt-2
+                ml-4
                 py-2
                 px-4
                 rounded
                 focus:outline-none
-                focus:shadow-outline"
+                focus:shadow-outline
+                transition-all
+                duration-300"
               />
             </form>
             <div className="flex flex-col justify-center items-center gap-2 px-4 py-2">
-              <p className="text-sm font-semibold text-bgDark">
+              <p className="text-sm font-semibold text-mainBlue-light">
                 Forgot your password:
               </p>
               <button
                 className="
-                bg-actionBlue
-                hover:bg-blue-700
+                bg-blurTrust-light
+                hover:bg-blurTrust-dark
+                active:bg-blurTrust-darkest
                 text-sm
                 text-white
                 font-semibold
+                shadow-md
+                hover:shadow-lg
                 py-2
                 px-4
                 rounded
                 focus:outline-none
-                focus:shadow-outline"
+                focus:shadow-outline
+                transition-all
+                duration-300"
               >
                 Forgot Password
               </button>

@@ -1,16 +1,18 @@
 import React from "react";
 import { useParams } from "react-router";
 import { useGetProductByIdQuery } from "../services/eCommerceAPI";
+import Loading from "./components/Loading";
+import ErrorDataNotLoaded from "./components/ErrorDataNotLoaded";
 
 export default function ProductDetailPage() {
   const { details } = useParams();
   const { data, isLoading, error } = useGetProductByIdQuery(details);
 
   if (isLoading) {
-    return <p>loading....</p>;
+    return <Loading />;
   }
   if (error) {
-    return <p>error</p>;
+    return <ErrorDataNotLoaded error={error} />;
   }
   if (data) {
     return (

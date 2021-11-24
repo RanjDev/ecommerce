@@ -26,6 +26,9 @@ module.exports = {
         warningRed: "#bb5858",
         successGreen: "#58bb71",
       },
+      animation: {
+        "spin-slow": "spin 2s linear infinite",
+      },
     },
   },
   variants: {

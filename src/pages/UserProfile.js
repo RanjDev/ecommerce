@@ -23,10 +23,17 @@ export default function UserProfile() {
             <h1 className="text-lg font-semibold text-bgDark">User Name</h1>
             <p className="text-md">{userInfo.email}</p>
             <div className="flex gap-4 items-center justify-center mt-16 ">
-              <button className="bg-bgDark text-bgLight px-2 py-2 rounded opacity-90 hover:opacity-100 transition-all duration-150">
+              <button
+                className=" transition-all duration-300 text-goldenBalance-extraLight bg-mainBlue-light
+                 hover:bg-mainBlue-default active:bg-mainBlue-dark
+               px-2 py-2 rounded"
+              >
                 Change Password
               </button>
-              <button className=" bg-bgLight border-2 text-bgDark border-bgDark hover:bg-bgDark hover:text-bgLight px-2 py-2 rounded transition-all duration-150">
+              <button
+                className=" bg-goldenBalance-extraLight border-2 text-bgDark border-bgDark hover:bg-bgDark hover:text-goldenBalance-extraLight
+               active:bg-mainBlue-dark px-2 py-2 rounded transition-all duration-300"
+              >
                 Update Profile
               </button>
             </div>
