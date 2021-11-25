@@ -7,7 +7,7 @@ export default function Loading() {
       <div className="w-full h-screen flex items-center justify-center">
         <div>
           <img
-            className="animate-spin-slow h-48 sm:h-60 lg:h-full"
+            className="animate-spin-slow h-12 sm:h-24 lg:h-48"
             src={LoadingSVG}
             alt="loafing svg"
           />
