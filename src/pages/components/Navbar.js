@@ -24,7 +24,7 @@ export default function Navbar() {
             className="text-goldenBalance-extraLight hover:text-goldenBalance-light transition-all duration-200 active:text-goldenBalance-dark"
             to="/"
           >
-            Home/Logo
+            Home
           </NavLink>
           <ul className="w-full justify-between items-center gap-1 px-4 hidden sm:flex">
             <div className="flex items-center gap-4">
