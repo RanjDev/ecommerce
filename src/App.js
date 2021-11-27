@@ -15,9 +15,9 @@ import Cart from "./pages/Cart";
 
 function App() {
   return (
-    <div className="overflow-hidden">
+    <div className="overflow-hidden bg-red-500">
       <Navbar />
- 
+
       {/* Router Paths */}
       <Routes>
         <Route path="/" element={<Home />} />
