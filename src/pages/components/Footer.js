@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="w-full border-t-2 border-gray-200 p-4 mt-16">
         <div>
           <div className="w-full my-4 flex flex-col items-center">
-            <div className="w-3/4 sm:w-2/4 h-auto bg-gradient-to-tr from-goldenBalance-light via-goldenBalance-extraLight to-goldenBalance-light rounded shadow-2xl">
+            <div className="w-3/4 sm:w-2/4 h-auto bg-goldenBalance-extraLight rounded shadow-2xl">
               <p className="text-center text-xs text-mainBlue-light mt-1 px-4">
                 Join our newsletter for the latest offers.
               </p>

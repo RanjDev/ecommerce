@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logOut } from "../../features/authSlice";
 
@@ -7,10 +7,10 @@ export default function Navbar() {
   const [showNav, setShowNav] = useState(false); //to check if the menu is shown or hidden
   const [navClasses, setNavClasses] = useState("-translate-y-96");
   // the classes that are applied to the small screen nav
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.carts);
-  const userInfo = useSelector((state) => state.auth.user);
+  const token = useSelector((state) => state.auth.user.token);
 
   let activeStyle = {
     borderBottom: "1px solid #bba35a",
@@ -51,7 +51,7 @@ export default function Navbar() {
               </NavLink>
             </div>
             <div className="flex items-center justify-center gap-2">
-              {Object.keys(userInfo) < 2 ? (
+              {token === "" ? (
                 <div className="flex justify-center items-center gap-4">
                   <Link to="login">
                     <button
@@ -85,6 +85,7 @@ export default function Navbar() {
                   <button
                     onClick={() => {
                       dispatch(logOut());
+                      navigate("/login");
                     }}
                     className="border border-goldenBalance-default text-goldenBalance-default  font-semibold py-1 px-2 rounded transition-all duration-300
                     hover:bg-goldenBalance-default hover:text-mainBlue-default active:bg-goldenBalance-dark"
@@ -202,7 +203,7 @@ export default function Navbar() {
               Cart [{cart.length}]
             </NavLink>
 
-            {Object.keys(userInfo) < 2 ? (
+            {token !== "" ? (
               <div className="flex justify-center items-center gap-4">
                 <Link
                   to="login"
@@ -290,6 +291,7 @@ export default function Navbar() {
                 <button
                   onClick={() => {
                     dispatch(logOut());
+                    navigate("/login");
                     setShowNav(!showNav);
                     // if to check if the nav is true or false
                     if (showNav === false) {

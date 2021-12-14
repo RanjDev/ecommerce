@@ -1,9 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-//TODO: also add to the localstorage
+const localToken = () => {
+  try {
+    const serializedState = localStorage.getItem("authToken");
+    if (serializedState === null) {
+      return "";
+    }
+    return JSON.parse(serializedState);
+  } catch (err) {
+    return undefined;
+  }
+};
 
 const initialState = {
-  user: {},
+  user: {
+    token: localToken(),
+  },
 };
 
 const authSlice = createSlice({
@@ -11,11 +23,12 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logIn: (state, action) => {
-      state.user.email = action.payload.email;
-      state.user.password = action.payload.password;
+      state.user.token = action.payload;
+      localStorage.setItem("authToken", JSON.stringify(state.user.token));
     },
     logOut: (state) => {
-      state.user = {};
+      state.user.token = "";
+      localStorage.setItem("authToken", JSON.stringify(state.user.token));
     },
   },
 });

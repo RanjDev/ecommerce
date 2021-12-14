@@ -1,14 +1,15 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router";
+import jwtDecode from "jwt-decode";
 
 export default function UserProfile() {
-  const userInfo = useSelector((state) => state.auth.user);
+  const token = useSelector((state) => state.auth.user.token);
 
-  if (Object.keys(userInfo) < 2) {
-    console.log("user info is:" + userInfo);
+  if (token === "" || token === undefined) {
     return <Navigate to="/login" />;
   } else {
+    const decodedToken = jwtDecode(token);
     return (
       <div>
         <div className="w-full h-auto flex flex-col justify-center items-center gap-6 p-4 sm:flex-row sm:p-8">
@@ -20,8 +21,10 @@ export default function UserProfile() {
             />
           </div>
           <div className="flex flex-col justify-center items-center ">
-            <h1 className="text-lg font-semibold text-bgDark">User Name</h1>
-            <p className="text-md">{userInfo.email}</p>
+            <h1 className="text-lg font-semibold text-bgDark">
+              {`${decodedToken.firstName}  ${decodedToken.lastName}`}
+            </h1>
+            <p className="text-md">{decodedToken.email}</p>
             <div className="flex gap-4 items-center justify-center mt-16 ">
               <button
                 className=" transition-all duration-300 text-goldenBalance-extraLight bg-mainBlue-light

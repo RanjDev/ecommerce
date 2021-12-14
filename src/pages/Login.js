@@ -3,16 +3,16 @@ import LoginSvg from "../login.svg";
 import { useDispatch } from "react-redux";
 import { logIn } from "../features/authSlice";
 import { useNavigate } from "react-router";
+import { BiLockAlt } from "react-icons/bi";
+import { useLoginUserMutation } from "../services/eCommerceAPI";
 
 export default function Login() {
   const [inputs, setInputs] = useState({});
-  const [isChecked, setIsChecked] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleCheckChange = () => {
-    setIsChecked(!isChecked);
-  };
+  const [loginUser, { data: loginResponse, error: loginError }] =
+    useLoginUserMutation();
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -23,110 +23,117 @@ export default function Login() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (dispatch(logIn(inputs))) {
-      navigate("/profile");
-    } else {
-      alert("Login failed");
-    }
+    const userObject = {
+      email: inputs.email,
+      password: inputs.password,
+    };
+    loginUser(userObject);
 
-    // console.log(inputs.email);
-    // console.log(inputs.password);
-    // console.log(isChecked);
+    setInputs("");
   };
+  if (loginResponse) {
+    dispatch(logIn(loginResponse));
+    navigate("/profile");
+  }
   return (
-    <div>
-      <div className="w-full h-screen  flex justify-center  bg-gradient-to-tr from-mainBlue-default via-goldenBalance-light to-mainBlue-default">
-        <div className="w-full my-4 flex flex-col items-center">
-          <img className="h-24" src={LoginSvg} alt="login" />
-          <div className="w-4/6 h-auto bg-goldenBalance-extraLight rounded shadow-2xl">
-            <p className="text-center text-xs text-gray-600 mt-4 px-4">
-              Our registered users benefit from our services.
+    <>
+      <p>{loginError ? loginError.data.error : ""}</p>
+      <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-md w-full space-y-8">
+          <div>
+            <img className="h-24 mx-auto  w-auto" src={LoginSvg} alt="login" />
+
+            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+              Sign in to your account
+            </h2>
+            <p className="mt-2 text-center text-sm text-gray-600">
+              Or{" "}
+              <p className="font-medium text-indigo-600 hover:text-indigo-500">
+                contact our team to get you started
+              </p>
             </p>
-            <form onSubmit={handleSubmit} className="p-4 m-4">
-              <label className="block text-gray-700  text-xs font-bold mb-2">
-                Enter your email:
+          </div>
+          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+            <input type="hidden" name="remember" defaultValue="true" />
+            <div className="rounded-md shadow-sm -space-y-px">
+              <div>
+                <label htmlFor="email-address" className="sr-only">
+                  Email address
+                </label>
                 <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 mb-4 text-xs text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="leo@decaprio.com"
-                  type="email"
+                  id="email-address"
                   name="email"
+                  type="email"
                   value={inputs.email || ""}
                   onChange={handleChange}
+                  autoComplete="email"
+                  required
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="Email address"
                 />
-              </label>
-              <label className="block text-gray-700  text-xs font-bold mb-2">
-                Enter your password:
+              </div>
+              <div>
+                <label htmlFor="password" className="sr-only">
+                  Password
+                </label>
                 <input
-                  className="shadow appearance-none border rounded w-full py-2 px-3 mb-4 text-xs text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                  placeholder="NOT 1234"
-                  type="password"
+                  id="password"
                   name="password"
+                  type="password"
                   value={inputs.password || ""}
                   onChange={handleChange}
+                  autoComplete="current-password"
+                  required
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="Password"
                 />
-              </label>
-              <label>
+              </div>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <div className="flex items-center">
                 <input
-                  className="text-gray-700  text-xs font-bold mb-2"
+                  id="remember-me"
+                  name="remember-me"
                   type="checkbox"
-                  name="saveUserInfo"
-                  // value={inputs.saveUserInfo || ""}
-                  checked={isChecked}
-                  onChange={handleCheckChange}
-                />{" "}
-                Remember Me
-              </label>
-              <input
-                value="Login"
-                type="submit"
-                className="
-                bg-blurTrust-light
-                hover:bg-blurTrust-dark
-                active:bg-blurTrust-darkest
-                text-sm
-                text-white
-                font-semibold
-                shadow-md
-                hover:shadow-lg
-                mt-2
-                ml-4
-                py-2
-                px-4
-                rounded
-                focus:outline-none
-                focus:shadow-outline
-                transition-all
-                duration-300"
-              />
-            </form>
-            <div className="flex flex-col justify-center items-center gap-2 px-4 py-2">
-              <p className="text-sm font-semibold text-mainBlue-light">
-                Forgot your password:
-              </p>
+                  className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                />
+                <label
+                  htmlFor="remember-me"
+                  className="ml-2 block text-sm text-gray-900"
+                >
+                  Remember me
+                </label>
+              </div>
+
+              <div className="text-sm">
+                {/* <a
+                  href="#"
+                  className="font-medium text-indigo-600 hover:text-indigo-500"
+                >
+                  Forgot your password?
+                </a> */}
+              </div>
+            </div>
+
+            <div>
               <button
-                className="
-                bg-blurTrust-light
-                hover:bg-blurTrust-dark
-                active:bg-blurTrust-darkest
-                text-sm
-                text-white
-                font-semibold
-                shadow-md
-                hover:shadow-lg
-                py-2
-                px-4
-                rounded
-                focus:outline-none
-                focus:shadow-outline
-                transition-all
-                duration-300"
+                type="submit"
+                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md
+                 text-white bg-blurTrust-light hover:bg-blurTrust-dark active:bg-blurTrust-darkest transition-all duration-300"
               >
-                Forgot Password
+                <span className="absolute left-0 inset-y-0 flex items-center pl-3">
+                  <BiLockAlt
+                    className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400 transition-all duration-300"
+                    aria-hidden="true"
+                  />
+                </span>
+                Sign in
               </button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
-    </div>
+    </>
   );
 }
