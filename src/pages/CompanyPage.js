@@ -4,7 +4,7 @@ import { useGetProductsQuery } from "../services/eCommerceAPI";
 import Loading from "./components/Loading";
 import ProductCards from "./components/ProductsCards";
 
-export default function CategoryPage() {
+export default function CompanyPage() {
   const { name } = useParams();
   const { data, isLoading, error } = useGetProductsQuery();
   if (error) return <p>{error.data.error}</p>;
@@ -13,7 +13,7 @@ export default function CategoryPage() {
     return (
       <div className="flex flex-wrap justify-center gap-8 mt-4">
         {data.map((datum, index) => {
-          if (datum.category.name === name) {
+          if (datum.company.name === name) {
             return <ProductCards product={datum} key={index} />;
           } else {
             return "";

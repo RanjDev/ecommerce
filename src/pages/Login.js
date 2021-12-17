@@ -11,6 +11,8 @@ export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // const token = useSelector((state) => state.auth.user.token);
+
   const [loginUser, { data: loginResponse, error: loginError }] =
     useLoginUserMutation();
 
@@ -37,6 +39,7 @@ export default function Login() {
   }
   return (
     <>
+      {/* {token !== "" && navigate("/home")} */}
       <p>{loginError ? loginError.data.error : ""}</p>
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">

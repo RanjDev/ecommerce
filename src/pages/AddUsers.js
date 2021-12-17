@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAddUserMutation } from "../services/eCommerceAPI";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import jwtDecode from "jwt-decode";
 
 export default function AddUsers() {
   const [addUser, { data, error }] = useAddUserMutation();
   const [inputs, setInputs] = useState({});
+
+  let navigate = useNavigate();
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -25,6 +30,18 @@ export default function AddUsers() {
 
     setInputs("");
   };
+  const token = useSelector((state) => state.auth.user.token);
+  const role = () => {
+    if (token !== "") {
+      const decodedToken = jwtDecode(token);
+      return decodedToken.role;
+    } else {
+      return "";
+    }
+  };
+  useEffect(() => {
+    role() !== "admin" && navigate("/");
+  }, []);
 
   return (
     <>

@@ -1,13 +1,18 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import {
   useGetCompaniesQuery,
   useGetCategoriesQuery,
   useAddProductMutation,
 } from "../services/eCommerceAPI";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import jwtDecode from "jwt-decode";
 
 export default function AddProduct() {
   const [inputs, setInputs] = useState({});
-  // const [image, setImage] = useState("");
+  const [image, setImage] = useState("");
+
+  let navigate = useNavigate();
 
   const [addProduct, { data: addProductSuccess, error: addProductError }] =
     useAddProductMutation();
@@ -31,31 +36,45 @@ export default function AddProduct() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const productObject = {
-      name: inputs.productName,
-      price: inputs.price,
-      description: inputs.productDescription,
-      quantity: inputs.quantity,
-      company: inputs.company,
-      category: inputs.category,
-    };
 
-    // const data = new FormData();
-    // data.append("name", inputs.productName);
-    // data.append("price", inputs.price);
-    // data.append("description", inputs.quantity);
-    // data.append("quantity", inputs.quantity);
-    // data.append("company", inputs.company);
-    // data.append("category", inputs.category);
+    // const productObject = {
+    //   name: inputs.productName,
+    //   price: inputs.price,
+    //   description: inputs.productDescription,
+    //   quantity: inputs.quantity,
+    //   company: inputs.company,
+    //   category: inputs.category,
+    // };
 
-    // data.append("image", image);
+    const data = new FormData();
+    data.append("name", inputs.productName);
+    data.append("price", inputs.price);
+    data.append("description", inputs.productDescription);
+    data.append("quantity", inputs.quantity);
+    data.append("company", inputs.company);
+    data.append("category", inputs.category);
 
-    // addProduct(data);
-    addProduct(productObject);
+    data.append("image", image);
+
+    addProduct(data);
+    // addProduct(productObject);
 
     // setImage("");
     setInputs("");
   };
+
+  const token = useSelector((state) => state.auth.user.token);
+  const role = () => {
+    if (token !== "") {
+      const decodedToken = jwtDecode(token);
+      return decodedToken.role;
+    } else {
+      return "";
+    }
+  };
+  useEffect(() => {
+    role() !== "admin" && navigate("/");
+  }, []);
 
   if (getCompanyError) {
     return <p> {JSON.stringify(getCompanyError)}</p>;
@@ -252,8 +271,8 @@ export default function AddProduct() {
                                 name="image"
                                 type="file"
                                 onChange={(event) => {
-                                  // const file = event.target.files[0];
-                                  // setImage(file);
+                                  const file = event.target.files[0];
+                                  setImage(file);
                                 }}
                                 // className="sr-only "
                               />

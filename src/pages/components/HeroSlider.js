@@ -57,7 +57,11 @@ export default function HeroSlider() {
                       index === imgIndex ? "slide activeSlide mb-8" : "slide"
                     }
                   >
-                    <img className="" src={datum.image} alt="Hot Deals" />
+                    <img
+                      className="mx-auto h-16 sm:h-32 md:h-48 xl:h-72 2xl:h-96"
+                      src={datum.image}
+                      alt="Hot Deals"
+                    />
                     <p className="text-center text-xs sm:text-sm md:text-lg font-thin p-1 ">
                       {datum.name}
                     </p>

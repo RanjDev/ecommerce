@@ -1,5 +1,4 @@
 import "./App.css";
-import Navbar from "./pages/components/Navbar";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/components/Home";
 import AboutUs from "./pages/AboutUs";
@@ -13,32 +12,30 @@ import CategoryPage from "./pages/CategoryPage";
 import Cart from "./pages/Cart";
 import AddProduct from "./pages/AddProduct";
 import NormalNavbar from "./pages/components/NormalNavbar";
-// import { useSelector } from "react-redux";
-// import jwtDecode from "jwt-decode";
+import { useSelector } from "react-redux";
+import jwtDecode from "jwt-decode";
 import AdminNavbar from "./pages/components/AdminNavbar";
 import ShowUsers from "./pages/ShowUsers";
 import AddUsers from "./pages/AddUsers";
 import UpdateProduct from "./pages/UpdateProduct";
 import AdminShowProducts from "./pages/AdminShowProducts";
+import CompanyPage from "./pages/CompanyPage";
 
 function App() {
-  // const token = useSelector((state) => state.auth.user.token);
+  const token = useSelector((state) => state.auth.user.token);
 
-  // const role = () => {
-  //   if (token !== "") {
-  //     const decodedToken = jwtDecode(token);
-  //     return decodedToken.role;
-  //   } else {
-  //     return "";
-  //   }
-  // };
+  const role = () => {
+    if (token !== "") {
+      const decodedToken = jwtDecode(token);
+      return decodedToken.role;
+    } else {
+      return "";
+    }
+  };
   return (
     <div className="overflow-hidden ">
-      <Navbar />
-
-      <NormalNavbar />
-      <AdminNavbar />
-      {/* {role() === "admin" ? <AdminNavbar /> : <NormalNavbar />} */}
+      {role() === "admin" && <AdminNavbar />}
+      {role() === "user" && <NormalNavbar />}
 
       {/* Router Paths */}
       <Routes>
@@ -47,6 +44,7 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/products/:details" element={<ProductDetailPage />} />
         <Route path="/category/:name" element={<CategoryPage />} />
+        <Route path="/company/:name" element={<CompanyPage />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/cart" element={<Cart />} />

@@ -89,7 +89,7 @@ export default function NormalNavbar() {
                 </NavLink>
 
                 {/* Profile dropdown */}
-                <Menu as="div" className="ml-3 relative">
+                <Menu as="div" className="ml-3 relative z-10">
                   <div>
                     <Menu.Button
                       className="bg-gray-800 flex text-sm rounded-full focus:outline-none

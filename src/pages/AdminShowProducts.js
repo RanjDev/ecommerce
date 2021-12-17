@@ -1,14 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import {
   useGetProductsQuery,
   useDeleteProductMutation,
 } from "../services/eCommerceAPI";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
+import jwtDecode from "jwt-decode";
 
 export default function AdminShowProducts() {
   const { data, isLoading, error } = useGetProductsQuery();
   const [deleteProduct, { data: succesDelete, error: delErr }] =
     useDeleteProductMutation();
+  let navigate = useNavigate();
+
+  const token = useSelector((state) => state.auth.user.token);
+  const role = () => {
+    if (token !== "") {
+      const decodedToken = jwtDecode(token);
+      return decodedToken.role;
+    } else {
+      return "";
+    }
+  };
+  useEffect(() => {
+    role() !== "admin" && navigate("/");
+  }, []);
 
   if (isLoading) {
     return <p>Loading...</p>;

@@ -28,13 +28,16 @@ export const productsApiSlice = createApi({
     },
   }),
   // try to define the expected endpoints upfront as part of the structure
+  tagTypes: ["Product"],
   endpoints: (builder) => {
     return {
       getProducts: builder.query({
         query: () => "/products",
+        providesTags: ["Product"],
       }),
       getProductById: builder.query({
-        query: (id) => `products/${id}`,
+        query: (id) => `/products/${id}`,
+        providesTags: ["Product"],
       }),
       getCategories: builder.query({
         query: () => "/categories",
@@ -48,6 +51,7 @@ export const productsApiSlice = createApi({
           method: "POST",
           body: userObject,
         }),
+        invalidatesTags: ["Product"],
       }),
       addUser: builder.mutation({
         query: (userObject) => ({
@@ -71,6 +75,7 @@ export const productsApiSlice = createApi({
           url: `/products/${id}`,
           method: "DELETE",
         }),
+        invalidatesTags: ["Product"],
       }),
       updateProduct: builder.mutation({
         query: ({ id, ...rest }) => ({
@@ -78,6 +83,10 @@ export const productsApiSlice = createApi({
           method: "PUT",
           body: rest.prodObj,
         }),
+        invalidatesTags: ["Product"],
+      }),
+      searchProducts: builder.query({
+        query: (term) => `/search/${term}`,
       }),
     };
   },
@@ -96,4 +105,5 @@ export const {
   useGetUsersQuery,
   useDeleteProductMutation,
   useUpdateProductMutation,
+  useSearchProductsQuery,
 } = productsApiSlice;
