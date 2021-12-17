@@ -18,7 +18,7 @@ export const productsApiSlice = createApi({
 
   baseQuery: fetchBaseQuery({
     // baseUrl: "https://serene-eyrie-59879.herokuapp.com/",
-    baseUrl: "http://localhost:5000/",
+    baseUrl: "https://koga-ecommerce.herokuapp.com/",
     // if the endpoint requires auth, you need to add header with your API key
     prepareHeaders(headers) {
       if (localToken()) {
