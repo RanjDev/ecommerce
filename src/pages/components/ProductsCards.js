@@ -18,7 +18,7 @@ export default function ProductsCards({ product, index }) {
   getCart();
   return (
     <div className="">
-      <div className="group rounded-md shadow-2xl overflow-hidden hover:-m-4 hover:p-4  bg-goldenBalance-extraLight transition-all duration-300 ">
+      <div className="group rounded-md shadow-2xl overflow-hidden hover:-m-4 hover:p-4  bg-gray-100 transition-all duration-300 ">
         <Link
           className=" mx-auto text-xs font-semibold text-center w-20  rounded"
           to={`/products/${product._id}`}
@@ -33,7 +33,7 @@ export default function ProductsCards({ product, index }) {
             className="h-48 w-48 "
           ></div>
         </Link>
-        <div className="flex flex-col justify-around items-center gap-2 bg-goldenBalance-extraLight h-20 w-48">
+        <div className="flex flex-col justify-around items-center gap-2 bg-gray-100 h-20 w-48">
           <h1 className="text-xs font-semibold  text-center">{product.name}</h1>
           <div className="flex items-center gap-16">
             <p className="text-md text-center">$ {product.price}</p>

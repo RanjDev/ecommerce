@@ -22,7 +22,7 @@ export default function NormalNavbar() {
   const cart = useSelector((state) => state.cart.carts);
 
   return (
-    <Disclosure as="nav" className="bg-gray-800 ">
+    <Disclosure as="nav" className="bg-indigo-900 ">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -78,7 +78,7 @@ export default function NormalNavbar() {
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <NavLink
                   to="/cart"
-                  className="relative flex flex-col items-center bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white
+                  className="relative flex flex-col items-center bg-indigo-900 p-1 rounded-full text-gray-400 hover:text-white
                    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                 >
                   <span className="sr-only">View notifications</span>

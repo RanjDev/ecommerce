@@ -16,10 +16,10 @@ export default function Categories() {
   if (data) {
     return (
       <div>
-        <p className="text-center font-semibold text-xs sm:text-sm md:text-lg text-goldenBalance-extraLight bg-mainBlue-default">
+        <p className="text-center font-semibold text-xs sm:text-sm md:text-lg text-goldenBalance-extraLight bg-indigo-900">
           Choose from our categories
         </p>
-        <div className="flex flex-wrap gap-1 sm:gap-4 lg:gap-8 w-screen h-auto sm:h-32 p-2 justify-center items-center bg-mainBlue-default">
+        <div className="flex flex-wrap gap-1 sm:gap-4 lg:gap-8 w-screen h-auto sm:h-32 p-2 justify-center items-center bg-indigo-900">
           {data.map((datum) => {
             return (
               <Link to={`/category/${datum.name}`}>

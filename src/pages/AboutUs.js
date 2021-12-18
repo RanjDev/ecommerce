@@ -6,13 +6,13 @@ export default function AboutUs() {
       <div className="flex flex-col items-center gap-2 w-full h-screen">
         <section className="h-1/2 w-full">
           <h1
-            className=" flex flex-col items-center justify-center text-center w-full h-1/4 text-mainBlue-default font-semibold  
+            className=" flex flex-col items-center justify-center text-center w-full h-1/4 text-indigo-600 font-semibold  
           text-2xl sm:text-3xl lg:text-4xl"
           >
             Our Mission
           </h1>
           <p
-            className="flex flex-col items-center justify-center text-center w-full h-3/4 text-goldenBalance-extraLight bg-mainBlue-default font-semibold  
+            className="flex flex-col items-center justify-center text-center w-full h-3/4 text-goldenBalance-extraLight bg-indigo-900 font-semibold  
           text-sm sm:text-md lg:text-xl"
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -26,13 +26,13 @@ export default function AboutUs() {
         </section>
         <section className="h-1/2 w-full">
           <h1
-            className=" flex flex-col items-center justify-center text-center w-full h-1/4 text-mainBlue-default font-semibold  
+            className=" flex flex-col items-center justify-center text-center w-full h-1/4 text-indigo-600 font-semibold  
           text-2xl sm:text-3xl lg:text-4xl"
           >
             What we do
           </h1>
           <ul
-            className="flex flex-col gap-4 items-baseline pl-8 justify-center text-center w-full h-3/4 text-goldenBalance-extraLight bg-mainBlue-default font-semibold  
+            className="flex flex-col gap-4 items-baseline pl-8 justify-center text-center w-full h-3/4 text-goldenBalance-extraLight bg-indigo-900 font-semibold  
           text-sm sm:text-md lg:text-xl
           list-disc"
           >

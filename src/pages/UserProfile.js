@@ -21,20 +21,20 @@ export default function UserProfile() {
             />
           </div>
           <div className="flex flex-col justify-center items-center ">
-            <h1 className="text-lg font-semibold text-bgDark">
+            <h1 className="text-lg font-semibold text-indigo-900">
               {`${decodedToken.firstName}  ${decodedToken.lastName}`}
             </h1>
             <p className="text-md">{decodedToken.email}</p>
             <div className="flex gap-4 items-center justify-center mt-16 ">
               <button
-                className=" transition-all duration-300 text-goldenBalance-extraLight bg-mainBlue-light
-                 hover:bg-mainBlue-default active:bg-mainBlue-dark
+                className=" transition-all duration-300 text-goldenBalance-extraLight bg-indigo-700
+                 hover:bg-indigo-800 active:bg-indigo-900
                px-2 py-2 rounded"
               >
                 Change Password
               </button>
               <button
-                className=" bg-goldenBalance-extraLight border-2 text-bgDark border-bgDark hover:bg-bgDark hover:text-goldenBalance-extraLight
+                className=" bg-gray-100 border-2 text-indigo-900 border-indigo-900 hover:bg-indigo-900 hover:text-gray-100
                active:bg-mainBlue-dark px-2 py-2 rounded transition-all duration-300"
               >
                 Update Profile

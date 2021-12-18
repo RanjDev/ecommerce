@@ -19,7 +19,7 @@ export default function Cart() {
   var checkOutPrice = 0;
   return (
     <div>
-      <div className="flex flex-wrap m-8 gap-8 justify-center items-center">
+      <div className=" flex flex-wrap m-8 gap-8 justify-center items-center">
         {cart.map((product, index) => {
           checkOutPrice += product.price;
           return (

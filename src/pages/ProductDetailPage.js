@@ -76,13 +76,13 @@ export default function ProductDetailPage() {
         </div>
         <div className="flex flex-col items-end gap-2 m-16 text-right ">
           <Link
-            className="bg-indigo-600 text-white p-2 rounded w-auto"
+            className="bg-indigo-600 hover:bg-indigo-800 active:bg-indigo-900 transition-all duration-300 text-white p-2 rounded w-auto"
             to={`/category/${data.category.name}`}
           >
             More like {data.category.name}
           </Link>
           <Link
-            className="bg-indigo-600 text-white p-2 rounded"
+            className="bg-indigo-600 hover:bg-indigo-800 active:bg-indigo-900 transition-all duration-300 text-white p-2 rounded"
             to={`/company/${data.company.name}`}
           >
             More from {data.company.name}

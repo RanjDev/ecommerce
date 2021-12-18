@@ -21,7 +21,7 @@ export default function AdminNavbar() {
   // const token = useSelector((state) => state.auth.user.token);
 
   return (
-    <Disclosure as="nav" className="bg-gray-800 ">
+    <Disclosure as="nav" className="bg-indigo-900 ">
       {({ open }) => (
         <>
           <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
